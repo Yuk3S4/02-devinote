@@ -1,0 +1,29 @@
+from fastapi import APIRouter, status, Depends
+from fastapi.security import OAuth2PasswordRequestForm
+
+from api.deps import DBSession
+from models.user import UserRead, UserCreate
+from repositories.user_repository import UserRepository
+from services.auth_service import AuthService
+
+router = APIRouter(prefix="/auth", tags=["Auth"])
+
+@router.post("/register", response_model=UserRead, status_code=status.HTTP_201_CREATED)
+def register(payload: UserCreate, db: DBSession):
+    service = AuthService(UserRepository(db))
+    return service.register(payload)
+
+@router.post("/login")
+def login(email: str, password: str, db: DBSession):
+    service = AuthService(UserRepository(db))
+    token = service.login(email, password)
+    return {"access_token": token, "token_type": "bearer"}
+
+@router.post("/token")
+def login(db: DBSession, form: OAuth2PasswordRequestForm = Depends()):
+    email = form.username
+    password = form.password
+
+    service = AuthService(UserRepository(db))
+    token = service.login(email, password)
+    return {"access_token": token, "token_type": "bearer"}
