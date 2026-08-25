@@ -1,8 +1,8 @@
 from fastapi import APIRouter, status
 
 from app.api.deps import DBSession, CurrentUser
-from models.note import NoteRead, NoteCreate, NoteUpdate
-from services.note_service import NoteService
+from app.models.note import NoteRead, NoteCreate, NoteUpdate
+from app.services.note_service import NoteService
 
 router = APIRouter(prefix="/notes", tags=["Notes"])
 

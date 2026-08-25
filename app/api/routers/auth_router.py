@@ -1,10 +1,10 @@
 from fastapi import APIRouter, status, Depends
 from fastapi.security import OAuth2PasswordRequestForm
 
-from api.deps import DBSession
-from models.user import UserRead, UserCreate
-from repositories.user_repository import UserRepository
-from services.auth_service import AuthService
+from app.api.deps import get_db, DBSession
+from app.models.user import UserCreate, UserRead
+from app.repositories.user_repository import UserRepository
+from app.services.auth_service import AuthService
 
 router = APIRouter(prefix="/auth", tags=["Auth"])
 

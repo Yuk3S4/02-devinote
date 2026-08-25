@@ -1,8 +1,8 @@
 from fastapi import HTTPException
 
-from core.security import hash_password, verify_password, create_access_token
-from models.user import UserCreate, User
-from repositories.user_repository import UserRepository
+from app.core.security import hash_password, verify_password, create_access_token
+from app.models.user import UserCreate, User
+from app.repositories.user_repository import UserRepository
 
 
 class AuthService:

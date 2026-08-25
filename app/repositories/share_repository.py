@@ -1,6 +1,6 @@
 from sqlmodel import Session, select,delete
 
-from models.share import NoteShare, LabelShare
+from app.models.share import NoteShare, LabelShare
 
 
 class ShareRepository:

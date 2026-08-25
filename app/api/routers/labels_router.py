@@ -1,8 +1,8 @@
 from fastapi import APIRouter, status
 
-from models.label import LabelRead, LabelCreate
+from app.models.label import LabelRead, LabelCreate
 from app.api.deps import DBSession, CurrentUser
-from services.label_service import LabelService
+from app.services.label_service import LabelService
 
 
 router = APIRouter(prefix="/notes", tags=["Notes"])

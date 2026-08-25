@@ -1,8 +1,7 @@
 from sqlmodel import Session, select, delete
 
-from models.label import Label, NoteLabelLink
-from models.note import Note
-from models.share import LabelShare
+from app.models.label import Label, NoteLabelLink
+from app.models.share import LabelShare
 
 
 class LabelRepository:

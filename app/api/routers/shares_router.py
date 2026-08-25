@@ -1,8 +1,8 @@
 from fastapi import APIRouter, status
 
 from app.api.deps import DBSession, CurrentUser
-from models.share import ShareRequest
-from services.share_service import ShareService
+from app.models.share import ShareRequest
+from app.services.share_service import ShareService
 
 router = APIRouter(prefix="/shares", tags=["Shares"])
 
